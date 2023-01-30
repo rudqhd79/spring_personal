@@ -1,0 +1,7 @@
+1675069869626	Rename package 'com.example.busreservation'
+1675069886078	Rename package 'com.example.config'
+1675070432126	Move 2 resources to 'layout'
+1675071190161	Move 'main.html' to 'templates'
+1675071203284	Rename resource 'layout.html'
+1675074466598	Move 'sidebar.html' to 'fragments'
+1675075376485	Delete element
