@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.reservation-ticket {
+	width: 1000px;
+	display: flex;
+	border : 1px solid black;
+}

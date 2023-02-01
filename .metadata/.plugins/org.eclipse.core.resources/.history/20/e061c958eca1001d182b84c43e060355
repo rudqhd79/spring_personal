@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+#page-wrapper {
+	margin-top: 1vw;
+}
+
+#sidebar-wrapper {
+	position: fixed;
+	width: 300px;
+	height: 100%;
+	margin-left: 0px;
+	background: white;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#page-content-wrapper {
+	margin-left: 300px;
+	width: 100%;
+	padding: 20px;
+}
+/* 사이드바 스타일 */
+.sidebar-nav {
+	width: 250px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border: 1px solid black;
+	opacity:0.85;
+}
+
+.sidebar-nav_li {
+	line-height: 6.5em;
+}
+
+.sidebar-nav li a {
+	display: block;
+	text-decoration: none;
+	color: black;
+}
+
+.sidebar-nav li a:hover {
+	color: #BC8F8F;
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav>.sidebar-brand {
+	font-size: 1.3em;
+	line-height: 3em;
+}
+
+.sidebar-main {
+	font-weight: bold;
+	font-size: 1.2em;
+	text-align:center;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.sidebar-total {
+	width: 1500px;
+	margin: 0 auto;
+}
+
+.fragment-sidebar {
+	margin: 0 auto; width : 1500px;
+	display: flex;
+	width: 1500px;
+}
+
+.reservation-ticket {
+	width: 1200px;
+	height: 500px;
+	display: inline-block;
+	border: 1px solid black;
+}
+
+.sector_start_end {
+	margin-left: 100px;
+	margin-top: 30px;
+	border: 1px solid black;
+	border-radius: 30px; display : flex;
+	justify-content: space-around;
+	height: 400px;
+	width: 1000px;
+	display: flex;
+}
+
+.sector1, .sector2 {
+	margin-top: 2vw;
+	width: 18vw;
+	height: 11vw;
+	display: flex;
+	flex-direction: center;
+}
+
+.terminal {
+	font-size: 2em;
+}
+
+.sector1_start, .sector2_end {
+	width: 100%;
+	display: inline-block;
+}
+
+.start-region, .end-region {
+	border-radius: 30px;
+	border: 3px solid black;
+	text-align: center;
+	height: 150px;
+	line-height: 150px;
+	margin-top: 30px;
+}
+
+.select-region {
+	height: 50px;
+	width: 80%;
+	border: 2px solid black;
+	border-radius: 15px;
+}
+.arrow_position img {
+	margin-top: 150px;
+}
+
+.show_bus {
+	text-align: center;
+	margin-top: 70px;
+}
+
+.check_button {
+	font-size: 1.2em;
+	font-weight: bold;
+	border: solid 3px black;
+	border-radius: 12px;
+	background: white;
+}
+
+.home {
+	text-align: center;
+	margin : 10px 0;
+}
+
+.home_img {
+	margin: auto;
+	display: block;
+}
+
