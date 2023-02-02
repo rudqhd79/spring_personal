@@ -169,19 +169,15 @@
 }
 
 .seat_form {
-	
 	flex-grow: 1;
 	display: flex;
 	justify-content: center;
 	margin-top: 10px;
-	/*align-items: center;*/
 }
 
 .seat_choice {
 	display: flex;
 	justify-content: space-between;
-	/*	margin-top: 40px;
-	margin-left: 190px;*/
 	border-radius: 50px;
 	border: 2px solid black;
 	width: 800px;
@@ -234,8 +230,7 @@ tr, td {
 }
 
 input[type="checkbox"]:checked {
-	filter: invert(50%);
-	background: black;
+	visibility: hidden;
 }
 
 .seat {
@@ -307,4 +302,48 @@ input[type="checkbox"]:checked {
 .reservation_seat {
 	text-align: center;
 	height: 150px;
+}
+
+
+.login {
+	flex-direction:row;
+	margin-top : 80px;
+	width: 900px;
+	height: 750px;
+	display: flex;
+	justify-content: space-between;
+	border-radius: 50px;
+	border: 2px solid black;
+	width: 800px;
+	height: 650px;
+	table-layout: fixed;
+	border-radius: collapse;
+	position:absolute;
+}
+
+.login_section {
+	width: 60%;
+	height: 100%;
+	margin: 0 auto;
+	display: inline-block;
+	text-align: center;
+    transform: translate(0%, 42%);
+}
+
+.join_section {
+	border-left: 1px solid black;
+	width: 40%;
+	height: 100%;
+}
+
+.login_section_id {
+	margin-left: 16px;
+}
+
+.login_section input {
+	border-radius: 50px;
+}
+
+.login_btn input {
+	
 }

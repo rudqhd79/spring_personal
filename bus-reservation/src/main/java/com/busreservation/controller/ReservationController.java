@@ -26,4 +26,9 @@ public class ReservationController {
 	public String seat() {
 		return "reservation/seat";
 	}
+	
+	@GetMapping(value = "login")
+	public String login() {
+		return "login/login";
+	}
 }
