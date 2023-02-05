@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
+
+//포트번호 8100
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 public class BusReservationApplication {
 

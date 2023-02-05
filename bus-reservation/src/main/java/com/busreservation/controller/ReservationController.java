@@ -31,4 +31,29 @@ public class ReservationController {
 	public String login() {
 		return "login/login";
 	}
+	
+	@GetMapping(value = "join")
+	public String join() {
+		return "login/join";
+	}
+	
+	@GetMapping(value = "check")
+	public String check() {
+		return "reservation/check";
+	}
+	
+	@GetMapping(value = "cancel")
+	public String cancel() {
+		return "reservation/cancel";
+	}
+	
+	@GetMapping(value = "edit")
+	public String edit() {
+		return "edit/edit";
+	}
+	
+	@PostMapping(value = "edit_input")
+	public String edit_input() {
+		return "edit/edit_input";
+	}
 }

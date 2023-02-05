@@ -164,7 +164,19 @@
 	height: 650px;
 	table-layout: fixed;
 	border-collapse: collapse;
-	box-shadow: 0 0 0 1px black;
+	box-shadow: 0 0 0 2px black;
+	border-style: hidden;
+}
+
+.edit_border {
+	border-radius: 50px;
+	border: 2px solid black;
+	margin : 0 0 200px 110px;
+	width: 950px;
+	height: 800px;
+	table-layout: fixed;
+	border-collapse: collapse;
+	box-shadow: 0 0 0 2px black;
 	border-style: hidden;
 }
 
@@ -206,12 +218,13 @@
 }
 
 .table_head {
+	text-align: center;
 	padding: 30px;
 	font-size: 1.2em;
 	margin: 10px 0;
 }
 
-tr, td {
+.lookup_tr, .lookup_td {
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
 	border-collapse: collapse;
@@ -313,7 +326,7 @@ input[type="checkbox"]:checked {
 	display: flex;
 	justify-content: space-between;
 	border-radius: 50px;
-	border: 2px solid black;
+	border: 2px solid skyblue;
 	width: 800px;
 	height: 650px;
 	table-layout: fixed;
@@ -322,28 +335,186 @@ input[type="checkbox"]:checked {
 }
 
 .login_section {
-	width: 60%;
+	width: 70%;
 	height: 100%;
 	margin: 0 auto;
 	display: inline-block;
 	text-align: center;
-    transform: translate(0%, 42%);
+    transform: translate(0%, 33%);
+    font-weight:900;
+}
+
+.join_section2 {
+	width: 65%;
+	height: 80%;
+	margin : 75px 0 0 100px;
+	display: grid;
+	text-align: center;
+    transform: translate(0%, 7%);
+    font-weight:900;
 }
 
 .join_section {
-	border-left: 1px solid black;
+	border-left: 2px solid skyblue;
 	width: 40%;
 	height: 100%;
+	text-align: center;
+	display: inline-block;
+	padding-top: 100px;
 }
 
-.login_section_id {
-	margin-left: 16px;
+.join_section p:first-child {
+	font-weight:700;
+	font-size: 1.5em; 
 }
 
-.login_section input {
+.join_section p:last-child {
+	font-weight:900;
+	font-size: 2em;
+}
+
+.login_section_child:first-child {
+	margin-left: 13px;
+}
+
+.login_section_child {
+	font-size: 1.2em;
+	margin-top: 30px;
+}
+
+.join_section_child {
+	text-align: right;
+	font-size: 1.4em;
+}
+
+.join_section_child span {
+	margin-right: 20px;
+}
+
+.login_section input, .join_section2 input {
 	border-radius: 50px;
 }
 
 .login_btn input {
-	
+	margin: 30px 0 0 50px;
+	font-size: 1.4em;
+	border: 5px solid skyblue;
+	background: white;
+}
+
+.join_btn {
+	margin : 30px 0 0 100px;
+}
+
+.join_btn input {
+	font-size: 1.4em;
+	border: 5px solid skyblue;
+	background: white;
+}
+
+.change_btn {
+	font-size: 1.4em;
+	background: white;
+}
+
+input[type=text], input[type=password] {
+	width: 60%;
+	line-height: 40px;
+}
+
+.click_join_icon {
+	border: 1px solid black;
+}
+
+.join_word1 {
+	line-height: 35px;
+}
+
+.join_word2 {
+	margin-top: 30px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: skyblue;
+}
+
+.check_child:first-child {
+	transform: translate(-4%, 35%);
+	display: flex;
+	width: 850px;
+	height: 500px;
+}
+
+.check_child:nth-of-type(1) {
+	padding: 20px;
+	display: flex;
+	width: 70%;
+}
+
+.check_child:nth-of-type(2) {
+	transform: translate(25%, 25%);
+	text-align:center;
+	display: inline-block;
+	width: 30%;
+}
+
+.check_child:nth-of-type(2) p {
+	font-size: 1.8em;
+	font-weight: 900;
+}
+
+.check_child {
+	display: block;
+}
+
+.check_child table {
+	margin: -20px -20px 0 70px;
+	width: 80%;
+}
+
+.check_th {
+	font-size: 1.3em;
+	border-bottom: 3px solid black;
+}
+
+.check_child>tr {
+	font-size: 1.2em;
+}
+
+.check_tr_three th:first-child {
+	width: calc(100% / 3);
+}
+
+.check_tr_three th:nth-of-type(3), .check_tr_two th:nth-of-type(3) {
+	text-align: right;
+}
+
+div>.change_btn {
+	transform: translate(100%, 100%);
+}
+
+.edit_border {
+	transform: translate(0%, 14%);
+	overflow: hidden;
+	border-collapse: collapse;
+}
+
+.edit_table {
+	border-collapse: collapse;
+}
+
+.edit_tr, .edit_td {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-collapse: collapse;
+}
+
+.edit_input_div {
+	padding:100px;
 }
