@@ -34,7 +34,7 @@
 <th:block layout:fragment="css"></th:block>
 </head>
 <body>
-	<form th:action="@{edit}">
+	<form th:action="@{/}">
 		<div class="fragment-sidebar">
 			<div th:replace="fragments/sidebar::sidebar"></div>
 			<div class="base_angle" style="margin-top: 1vw">
@@ -46,9 +46,9 @@
 						<div style="width: 50%;">기존</div>
 						<div style="width: 50%;">변경</div>
 					</div>
-					<div class="edit_input_info" style="border: 1px solid black; display: flex; justify-content: space-between; text-align: center; font-size: 1.8em; height: 400px">
-						<div class="edit_input_info_existing" style="border: 1px solid black; width: 49%">
-							<table style="width: 100%; width: 100%; font-size: 1.7rem; font-weight: bold; border-collapse: separate; border-spacing: 0 30px; margin-top: 55px;">
+					<div class="edit_input_info" style="display: flex; justify-content: space-between; text-align: center; font-size: 1.8em; height: 350px; margin-bottom: 70px">
+						<div class="edit_input_info_existing" style="width: 45%">
+							<table style="width: 100%; table-layout: auto; font-size: 1.7rem; font-weight: bold; border-collapse: separate; border-spacing: 0 30px; margin-top: 55px;">
 								<tr>
 									<th style="width: calc(100% / 3); text-align: right">출발</th>
 									<th style="width: calc(100% / 3); text-align: right; padding-right: 10px">서울</th>
@@ -61,17 +61,61 @@
 								</tr>
 								<tr>
 									<th style="text-align: right">고속사</th>
-									<th style="text-align: right;">이젠고속</th>
+									<th colspan="2" style="text-align: center;">이젠고속</th>
 								</tr>
 							</table>
 						</div>
-						<div style="width: 2%; border-left: 6px dashed black; display: block; margin-left:15px"></div>
-						<div class="edit_input_info_change" style="border: 1px solid black; width:49%">
-							change
+						<div style="width: 1%; border-left: 4px dashed black; display: block;"></div>
+						<div class="edit_input_info_change" style="width:54%">
+							<table  style="width: 100%; table-layout: auto; font-size: 1.7rem; font-weight: bold; border-collapse: separate; border-spacing: 0 20px; margin-top: 20px;">
+								<tr>
+									<th>출발지</th>
+									<th>
+										<select style="width:80%;">
+											<option value="">서울</option>
+											<option value="">인천</option>
+											<option value="">부산</option>
+										</select>
+									</th>
+								</tr>
+								<tr>
+									<th>출발시간</th>
+									<th>
+										<input type="time" style="width:80%;" />
+									</th>
+								</tr>
+								<tr>
+									<th>도착지</th>
+									<th>
+										<select style="width:80%;">
+											<option value="">서울</option>
+											<option value="">인천</option>
+											<option value="">부산</option>
+										</select>
+									</th>
+								</tr>
+								<tr>
+									<th>도착시간</th>
+									<th>
+										<input type="time" style="width:80%;" />
+									</th>
+								</tr>
+								<tr>
+									<th>고속사</th>
+									<th>
+										<select style="width:80%;">
+											<option value="">이젠고속</option>
+											<option value="">금호고속</option>
+											<option value="">중앙고속</option>
+											<option value="">동양고속</option>
+										</select>
+									</th>
+								</tr>
+							</table>
 						</div>
 					</div>
-					<div class="edit_input_button" style="border: 1px solid black">
-						<input type="submit" value="적용" />
+					<div class="edit_input_button" style="text-align: center; font-size: 1.5em;">
+						<input type="submit" value="적용" style="border-radius: 30px; background: white; border:3px solid skyblue; width: 15%" />
 					</div>
 				</div>
 			</div>
