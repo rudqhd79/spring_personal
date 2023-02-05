@@ -1,0 +1,20 @@
+package com.busreservation.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import bus.busreservation.constant.Role;
+import groovy.transform.ToString;
+import lombok.Getter;
+import lombok.Setter;
+
+@Table(name="route")
+@Entity
+@Getter
+@Setter
+@ToString
+public class Route {
+
+	Private Long path_id;
+	
+}

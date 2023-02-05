@@ -1,0 +1,14 @@
+package com.busreservation.entity;
+
+import javax.persistence.Table;
+
+import groovy.transform.ToString;
+import lombok.Setter;
+
+@Getter
+@Setter
+@ToString
+@Table(name = "bus_seat")
+public class Seat {
+
+}
