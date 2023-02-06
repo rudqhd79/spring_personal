@@ -1,0 +1,7 @@
+package com.busreservation.config;
+
+import org.springframework.security.web.AuthenticationEntryPoint;
+
+public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
+
+}

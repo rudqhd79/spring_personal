@@ -4,16 +4,16 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="edit_td"/>
+		<item key="selection" value="memberService"/>
 		<list key="findhistory">
+			<item value="manytomany"/>
+			<item value="memberService"/>
 			<item value="edit_td"/>
 			<item value="edit_input_div"/>
 			<item value="edit_table"/>
 			<item value="collapse"/>
 			<item value="edit"/>
 			<item value="lookup_td"/>
-			<item value="lookup_tr"/>
-			<item value="lookup_list_table"/>
 		</list>
 		<list key="replacehistory">
 		</list>
