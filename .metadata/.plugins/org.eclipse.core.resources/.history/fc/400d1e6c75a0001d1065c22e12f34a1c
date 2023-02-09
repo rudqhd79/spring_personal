@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="bus-reservation">
-        <property name="context-root" value="bus-reservation"/>
-        <property name="java-output-path" value="/bus-reservation/target/classes"/>
-    </wb-module>
-</project-modules>

@@ -8,7 +8,7 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>main</title>
+<title>버스예매</title>
 
 <!-- bootstrap css -->
 <link
@@ -30,17 +30,38 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"
 	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
 	crossorigin="anonymous"></script>
-<th:block layout:fragment="script"></th:block>
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		function check_submit() {
+			var day = document.day;
+			var startOption = document.nday1;
+			var endOption = document.nday2;
+			if (day.nday1.value == day.nday2.value) {
+				alert("행선지가 같습니다. 다시 선택해 주세요.");
+				return false;
+			}
+			if (day.nday1.value == "a" || day.nday2.value ==  "b") {
+				alert("행선지를 선택해주세요.");
+				return false;
+			}
+			day.submit();
+		}
+		
+	</script>
+</th:block>
 <th:block layout:fragment="css"></th:block>
 </head>
 <body>
-	<form th:action="@{lookup}" method="post">
+	<form th:action="@{lookup}" method="post" name="day" class="main_form">
+		<!-- <iframe id="iframe1" name="iframe" style="display:none"></iframe> -->
 		<div class="fragment-sidebar">
 			<div th:replace="fragments/sidebar::sidebar"></div>
 			<!-- main part -->
 			<div id="page-content-wrapper">
 				<div>
-					<img src="https://www.ti21.co.kr/admin/assets/pages/img/main/20190509034746_0.png" style="width: 1200px" />
+					<img
+						src="https://www.ti21.co.kr/admin/assets/pages/img/main/20190509034746_0.png"
+						style="width: 1200px" />
 				</div>
 				<div class="reservation-ticket">
 					<div class="sector_start_end">
@@ -48,28 +69,30 @@
 							<div class="sector1_start">
 								<span class="terminal">출발터미널</span>
 								<div class="start-region">
-									<select class="select-region">
-										<option value="서울" name="mgr">서울</option>
-										<option value="인천" name="mgr">인천</option>
-										<option value="부산" name="mgr">부산</option>
+									<select class="select-region" name="nday1">
+										<option value="a">출발지 선택</option>
+										<th:block th:each=" terminal, status : ${terminals}">
+											<option th:value="${terminal.terminalId}" th:text="${terminal.terminalName}"></option>
+										</th:block>
 									</select>
 								</div>
 							</div>
 						</div>
 						<div class="arrow_position">
-							<img src="https://cdn-icons-png.flaticon.com/128/4939/4939761.png" style="width: 100px; height: 100px" />
+					    <img src="https://cdn-icons-png.flaticon.com/128/4939/4939761.png" style="width: 100px; height: 100px" />
 							<div class="show_bus">
-								<button type="submit" class="check_button" style="width:100px; height: 50px">조회</button>
+								<button type="submit" class="check_button" style="width: 100px; height: 50px" onclick="check_submit(); return false;">조회</button>
 							</div>
 						</div>
 						<div class="sector2">
 							<div class="sector2_end">
 								<span class="terminal">도착터미널</span>
 								<div class="end-region">
-									<select class="select-region">
-										<option value="" name="mgr">서울</option>
-										<option value="" name="mgr">인천</option>
-										<option value="" name="mgr">부산</option>
+									<select class="select-region" name="nday2">
+										<option value="b">도착지 선택</option>
+										<th:block th:each=" terminal, status : ${terminals}">
+											<option th:value="${terminal.terminalId}" th:text="${terminal.terminalName}"></option>
+										</th:block>
 									</select>
 								</div>
 							</div>

@@ -1,0 +1,9 @@
+package com.busreservation.dto;
+
+public class TerminalDto {
+
+	
+	private Long terminal_id;
+	
+	private String terminal_name;
+}

@@ -36,12 +36,12 @@ public class CustomerService implements UserDetailsService {	//UserDetailsServic
 				.build();
 	}
 	
-	public Customer saveMember(Customer member) {
-		validateDuplicateMember(member);
-		return customerRepository.save(member); //member 테이블에 insert
+	public Customer saveCustomer(Customer member) {
+		validateDuplicateCustomer(member);
+		return customerRepository.save(member);
 	}
 
-	private void validateDuplicateMember(Customer member) {
+	private void validateDuplicateCustomer(Customer member) {
 		Customer findMember = customerRepository.findByEmail(member.getEmail());
 		if (findMember != null) {
 			throw new IllegalStateException("이미 가입된 회원입니다.");

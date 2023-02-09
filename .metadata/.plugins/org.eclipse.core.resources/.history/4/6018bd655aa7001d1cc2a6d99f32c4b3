@@ -1,0 +1,5 @@
+package com.busreservation.entity;
+
+public class Terminal {
+
+}

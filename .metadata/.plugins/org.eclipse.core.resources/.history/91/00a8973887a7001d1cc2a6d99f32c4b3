@@ -1,0 +1,57 @@
+package com.busreservation.repository;
+
+import javax.persistence.EntityManager;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.busreservation.dto.QTerminalDto;
+import com.busreservation.dto.TerminalDto;
+import com.busreservation.entity.QTerminal;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+
+public class TerminalRepositoryCustomImpl implements TerminalRepositoryCustom {
+private JPAQueryFactory queryFactory;
+	
+	public TerminalRepositoryCustomImpl(EntityManager em) {
+		this.queryFactory = new JPAQueryFactory(em);
+	}
+
+	@Override
+	public Page<TerminalDto> getTerminalNamePage(Pageable pageable) {
+		QTerminal terminal = QTerminal.terminal;
+		
+		List<TerminalDto> content = queryFactory.select(new QTerminalDto(terminal.terminalName)).fetch();
+
+				
+				return null;
+	}
+	
+	/*private BooleanExpression regDtsAfter(String searchDateType) {
+		LocalDateTime dateTime = LocalDateTime.now(); 
+		
+		//현재 날짜로 부터 이전 날짜를 구해준다.
+		if(StringUtils.equals("all", searchDateType) || searchDateType == null)  return null;
+		else if(StringUtils.equals("1d", searchDateType)) dateTime = dateTime.minusDays(1); 
+		else if(StringUtils.equals("1w", searchDateType)) dateTime = dateTime.minusWeeks(1);
+		else if(StringUtils.equals("1m", searchDateType)) dateTime = dateTime.minusMonths(1);
+		else if(StringUtils.equals("6m", searchDateType)) dateTime = dateTime.minusMonths(6);
+		
+		return QItem.item.regTime.after(dateTime); //이후의 시간
+	}
+	
+	private BooleanExpression searchSellStatusEq(ItemSellStatus searchSellStatus) {
+		return searchSellStatus == null ? null : QItem.item.itemSellStatus.eq(searchSellStatus);
+	}
+	
+	
+	private BooleanExpression searchByLike(String searchBy, String searchQuery) {
+		if(StringUtils.equals("itemNm", searchBy)) {
+			return QItem.item.itemNm.like("%" + searchQuery + "%"); //itemNm LIKE %청바지%
+		} else if(StringUtils.equals("createdBy", searchBy)) {
+			return QItem.item.createBy.like("%" + searchQuery + "%"); //createdBy LIKE %test.com%
+		}
+		
+		return null;
+	}*/
+}

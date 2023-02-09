@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -21,12 +22,27 @@
 							<p class="home">HOME</p>
 						</a>
 					</li>
-					<li class="sidebar-main sidebar-nav_li"><a href="/">고속버스예매</a></li>
-					<li class="sidebar-main sidebar-nav_li"><a href="login">로그인</a></li>
-					<li class="sidebar-main sidebar-nav_li"><a href="join">회원가입</a></li>
-					<li class="sidebar-main sidebar-nav_li"><a href="check">예매확인 (좌석변경)</a></li>
-					<li class="sidebar-main sidebar-nav_li"><a href="cancel">예매취소</a></li>
-					<li class="sidebar-main sidebar-nav_li"><a href="edit">수정 (관리자 전용)</a></li>
+					<li class="sidebar-main sidebar-nav_li" sec:authorize="isAnonymous()">
+						<a href="/">고속버스예매</a>
+					</li>
+					<li class="sidebar-main sidebar-nav_li" sec:authorize="isAnonymous()">
+						<a href="login">로그인</a>
+					</li>
+					<li class="sidebar-main sidebar-nav_li" sec:authorize="isAuthenticated()">
+						<a href="logout">로그아웃</a>
+					</li>
+					<li class="sidebar-main sidebar-nav_li" sec:authorize="isAnonymous()">
+						<a href="join">회원가입</a>
+					</li>
+					<li class="sidebar-main sidebar-nav_li"  sec:authorize="isAuthenticated()">
+						<a href="check">예매확인 (좌석변경)</a>
+					</li>
+					<li class="sidebar-main sidebar-nav_li"  sec:authorize="isAuthenticated()">
+						<a href="cancel">예매취소</a>
+					</li>
+					<li class="sidebar-main sidebar-nav_li" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+						<a href="edit">수정 (관리자 전용)</a>
+					</li>
 				</ul>
 			</div>
 		</div>

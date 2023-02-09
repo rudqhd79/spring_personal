@@ -1,0 +1,18 @@
+package com.busreservation.dto;
+
+import org.springframework.data.jpa.repository.Query;
+
+import com.querydsl.core.annotations.QueryProjection;
+
+public class TerminalDto {
+
+	private Long terminal_id;
+	
+	private String terminal_name;
+	
+	@QueryProjection
+	public TerminalDto(Long terminal_id, String terminal_name) {
+		this.terminal_id = terminal_id;
+		this.terminal_name = terminal_name;
+	}
+}

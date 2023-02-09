@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -28,12 +29,11 @@ public class Path {
 
 	@Id
 	@Column(name = "path_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long path_id;	//경로 아이디
 	
 	@JoinColumn(name = "bus_id")
 	@OneToOne(fetch = FetchType.LAZY)
-	private Bus bus_id;	//버스 아이디
+	private Bus bus;	//버스 아이디
 	
 	@Column(name = "path_start")
 	private String path_start;	//경로 시작점
@@ -42,9 +42,8 @@ public class Path {
 	private String path_end;		//경로 끝지점
 	
 	@Column(name = "path_start_time")
-	private Date path_start_time;	//경로 출발시간
+	private String path_start_time;	//경로 출발시간
 	
-	@Column(name = "path_start_end")
-	private Date path_start_end;	//경로 도착시간
-	
+	@Column(name = "path_end_time")
+	private String path_end_time;	//경로 도착시간
 }

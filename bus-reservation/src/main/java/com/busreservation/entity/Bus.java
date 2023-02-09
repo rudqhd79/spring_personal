@@ -28,7 +28,6 @@ public class Bus {
 	
 	@Id
 	@Column(name = "bus_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long bus_id;	//버스 아이디
 	
 	@Column(name = "bus_kind")

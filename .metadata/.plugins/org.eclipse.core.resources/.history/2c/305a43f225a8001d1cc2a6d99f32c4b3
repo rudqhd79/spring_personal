@@ -1,0 +1,10 @@
+package com.busreservation.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.busreservation.entity.Terminal;
+
+public interface TerminalRepository extends JpaRepository<Terminal, Long> {
+	Termnal findByName(String terminlaName);
+	//터미널에서 출발, 도착 지점 select box에서 보여주는 쿼리
+}

@@ -231,6 +231,15 @@
 	text-align: center;
 }
 
+.lookup_td button {
+	font-size: 1.2em;
+	border-radius: 50px;
+	border: 2px solid skyblue;
+	font-weight: bold;
+	background: white;
+	padding: 10px;
+}
+
 .seat_img {
 	position: absolute;
 	top: 50%;
@@ -389,6 +398,10 @@ input[type="checkbox"]:checked {
 
 .join_section_child span {
 	margin-right: 20px;
+}
+
+.join_section_child span:nth-of-type(1) {
+	width: 310px;
 }
 
 .login_section input, .join_section2 input {

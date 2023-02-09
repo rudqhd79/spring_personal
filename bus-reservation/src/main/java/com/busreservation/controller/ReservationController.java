@@ -1,18 +1,33 @@
 package com.busreservation.controller;
 
-import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
+import javax.validation.Valid;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.busreservation.dto.CustomerFormDto;
+import com.busreservation.dto.PathDto;
+import com.busreservation.dto.TerminalDto;
 import com.busreservation.entity.Customer;
+import com.busreservation.entity.Path;
+import com.busreservation.entity.Terminal;
+import com.busreservation.repository.PathRepository;
+import com.busreservation.repository.TerminalRepository;
 import com.busreservation.service.CustomerService;
+import com.busreservation.service.BusTerminalService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -23,25 +38,34 @@ public class ReservationController {
 	
 	private final CustomerService customerService;
 	private final PasswordEncoder passwordEncoder;
+	private final TerminalRepository terminalRepository;
+	private final BusTerminalService busTerminalService;
 	
 	@GetMapping(value = "")
-	public String main() {
+	public String main(Model model) {
+		List<TerminalDto> terminals = busTerminalService.getTerminals();
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++");
+		terminals.stream().forEach(System.out::println);
+		model.addAttribute("terminals", terminals);
 		return "main";
 	}
 	
+	
+
 	@PostMapping(value = "lookup")
-	public String lookup() {
+	public String lookUp() {
+//		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
+//		Page<PathDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
+//		
+//		model.addAttribute("items", items);
+//		model.addAttribute("itemSearchDto", itemSearchDto);
+//		model.addAttribute("maxPage", 5);
 		return "reservation/lookup";
 	}
 	
 	@PostMapping(value = "seat")
 	public String seat() {
 		return "reservation/seat";
-	}
-	
-	@GetMapping(value = "login")
-	public String login() {
-		return "login/login";
 	}
 	
 	//사이드 바 경로
@@ -64,10 +88,10 @@ public class ReservationController {
 			
 			try {			
 				Customer member = Customer.createCustomer(customerFormDto, passwordEncoder);
-				customerService.saveMember(member);
+				customerService.saveCustomer(member);
 			} catch (IllegalStateException e) {
 				model.addAttribute("errorMessage", e.getMessage());
-				return "member/memberForm";
+				return "login/join";
 			}
 			
 			return "redirect:/";
@@ -88,8 +112,23 @@ public class ReservationController {
 		return "edit/edit";
 	}
 	
-	@PostMapping(value = "edit_input")
+	@GetMapping(value = "edit_input")
 	public String edit_input() {
 		return "edit/edit_input";
+	}
+	
+	private final SessionManager sessionManager;
+	
+	
+	@GetMapping(value = "login")
+	public String login() {
+		return "login/login";
+	}
+	
+	//로그인을 실패했을때
+	@GetMapping(value = "login/error")
+	public String loginError(Model model) {
+		model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요.");
+		return "login/login";
 	}
 }

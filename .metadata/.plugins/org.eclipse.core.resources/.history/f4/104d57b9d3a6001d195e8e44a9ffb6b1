@@ -1,0 +1,39 @@
+package com.busreservation.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import groovy.transform.ToString;
+import lombok.Getter;
+import lombok.Setter;
+
+@Table(name="region")
+@Entity
+@Getter
+@Setter
+@ToString
+public class Region {
+	@Id
+	@Column(name = "region_id")
+	private Long region_id;	
+	
+	@Column(name = "region_name")
+	private String region_name;	//버스 종류(버스 회사 종류)
+	
+//	@JoinColumn(name = "path_start", "path_end")
+	@JoinColumns ({  //외래 키 여러개 매핑
+        @JoinColumn(name = "path_start", referencedColumnName = "path_start"),
+        @JoinColumn(name = "path_end", referencedColumnName = "path_end")
+    })  
+	@OneToMany(fetch = FetchType.LAZY)
+	private Path path1;
+	
+
+}

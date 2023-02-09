@@ -1,0 +1,18 @@
+package com.busreservation.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+import org.springframework.data.repository.query.Param;
+
+import com.busreservation.entity.Path;
+import com.busreservation.entity.Terminal;
+
+public interface PathRepository extends JpaRepository<Path, Long>  {
+	
+	//출발점, 도착점과 겹치는 경로 가져오기
+	@Query(value = "select * from Path, Bus where Path.bus_id = Bus.bus_id and path_start = : ? and path_end = : ?")
+	List<Path> findByPath();
+}

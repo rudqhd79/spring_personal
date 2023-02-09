@@ -1,0 +1,14 @@
+package com.busreservation.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
+
+import com.busreservation.entity.Terminal;
+
+public interface TerminalRepository {
+	
+	//터미널에서 출발, 도착 지점 select box에서 보여주는 쿼리
+	@Query(value = "select terminal_name from terminal")
+	List<Terminal> findbyTerminalName(String terminalName);
+}

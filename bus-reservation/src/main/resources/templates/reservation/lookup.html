@@ -8,7 +8,7 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>main</title>
+<title>버스조회</title>
 
 <!-- bootstrap css -->
 <link
@@ -43,15 +43,18 @@
 			<form th:action="@{seat}" method="post">
 				<table class="lookup_list_table">
 					<thead>
-						<tr>
-							<th class="table_head">버스시간</th>
-							<th class="table_head left">출발</th>
-							<th class="table_head left">고속사</th>
-							<th class="table_head left">도착</th>
-							<th class="table_head left">예약버튼</th>
-						</tr>
+						<th:block th:each="path : ${paths.getContent()}">
+							<tr>
+								<th class="table_head">버스시간</th>
+								<th class="table_head left">출발</th>
+								<th class="table_head left">고속사</th>
+								<th class="table_head left">도착</th>
+								<th class="table_head left">예약버튼</th>
+							</tr>
+						</th:block>
 					</thead>
 					<tbody>
+						<th:block>
 							<tr class="lookup_tr">
 								<td class="lookup_td">00:00 ~ 00:00</td>
 								<td class="lookup_td">서울</td>
@@ -59,48 +62,7 @@
 								<td class="lookup_td">부산</td>
 								<td class="lookup_td"><button type="submit">예약</button></td>
 							</tr>
-							<tr class="lookup_tr">
-								<td class="lookup_td">00:00 ~ 00:00</td>
-								<td class="lookup_td">서울</td>
-								<td class="lookup_td">이젠고속</td>
-								<td class="lookup_td">부산</td>
-								<td class="lookup_td"><button type="submit">예약</button></td>
-							</tr>
-							<tr class="lookup_tr">
-								<td class="lookup_td">00:00 ~ 00:00</td>
-								<td class="lookup_td">서울</td>
-								<td class="lookup_td">이젠고속</td>
-								<td class="lookup_td">부산</td>
-								<td class="lookup_td"><button type="submit">예약</button></td>
-							</tr>
-							<tr class="lookup_tr">
-								<td class="lookup_td">00:00 ~ 00:00</td>
-								<td class="lookup_td">서울</td>
-								<td class="lookup_td">이젠고속</td>
-								<td class="lookup_td">부산</td>
-								<td class="lookup_td"><button type="submit">예약</button></td>
-							</tr>
-							<tr class="lookup_tr">
-								<td class="lookup_td">00:00 ~ 00:00</td>
-								<td class="lookup_td">서울</td>
-								<td class="lookup_td">이젠고속</td>
-								<td class="lookup_td">부산</td>
-								<td class="lookup_td"><button type="submit">예약</button></td>
-							</tr>
-							<tr class="lookup_tr">
-								<td class="lookup_td">00:00 ~ 00:00</td>
-								<td class="lookup_td">서울</td>
-								<td class="lookup_td">이젠고속</td>
-								<td class="lookup_td">부산</td>
-								<td class="lookup_td"><button type="submit">예약</button></td>
-							</tr>
-							<tr class="lookup_tr">
-								<td class="lookup_td">00:00 ~ 00:00</td>
-								<td class="lookup_td">서울</td>
-								<td class="lookup_td">이젠고속</td>
-								<td class="lookup_td">부산</td>
-								<td class="lookup_td"><button type="submit">예약</button></td>
-							</tr>
+						</th:block>
 					</tbody>
 				</table>
 			</form>
