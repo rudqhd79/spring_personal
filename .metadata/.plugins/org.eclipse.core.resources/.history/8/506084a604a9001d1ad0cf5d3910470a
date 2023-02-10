@@ -1,0 +1,16 @@
+package com.busreservation.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.busreservation.repository.PathRepository;
+import com.busreservation.repository.TerminalRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+@Transactional
+public class SeatService {
+
+}

@@ -1,5 +1,6 @@
 package com.busreservation.dto;
 
+import com.busreservation.constant.SeatReservationStatus;
 import com.busreservation.entity.Bus;
 
 public class SeatDto {
@@ -10,4 +11,5 @@ public class SeatDto {
 	
 	private int seat_no;	//좌석 번호
 	
+	private SeatReservationStatus seatReservationStatus;
 }

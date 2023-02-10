@@ -43,7 +43,6 @@
 			<form th:action="@{seat}" method="post">
 				<table class="lookup_list_table">
 					<thead>
-						<th:block th:each="path : ${paths.getContent()}">
 							<tr>
 								<th class="table_head">버스시간</th>
 								<th class="table_head left">출발</th>
@@ -51,15 +50,14 @@
 								<th class="table_head left">도착</th>
 								<th class="table_head left">예약버튼</th>
 							</tr>
-						</th:block>
 					</thead>
 					<tbody>
-						<th:block>
+						<th:block th:each="path, status : ${paths}">
 							<tr class="lookup_tr">
-								<td class="lookup_td">00:00 ~ 00:00</td>
-								<td class="lookup_td">서울</td>
-								<td class="lookup_td">이젠고속</td>
-								<td class="lookup_td">부산</td>
+								<td class="lookup_td">[[${path.path_start_time}]] ~ [[${path.path_end_time}]]</td>
+								<td class="lookup_td">[[${path.path_start}]]</td>
+								<td class="lookup_td">[[${path.bus.bus_kind}]]</td>
+								<td class="lookup_td">[[${path.path_end}]]</td>
 								<td class="lookup_td"><button type="submit">예약</button></td>
 							</tr>
 						</th:block>

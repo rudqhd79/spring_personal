@@ -1,0 +1,27 @@
+package com.busreservation.repository;
+
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.busreservation.dto.PathDto;
+import com.busreservation.dto.QPathDto;
+import com.busreservation.entity.Path;
+import com.busreservation.entity.QPath;
+
+public class PathRepositoryCustomImpl implements PathRepositoryCustom {
+
+	@Override
+	public Page<Path> getPaths(PathDto pathDto, Pageable pageable) {
+		QPath path = QPath.path;
+		
+		List<PathDto> content = queryFactory
+				.select(
+						new QPathDto(path.path_id, path.path_start, path.path_start_time, path.path_end, path.path_end_time, path.bus)
+						);
+		
+		return null;
+	}
+
+}

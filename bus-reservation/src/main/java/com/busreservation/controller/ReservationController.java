@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 import org.springframework.data.domain.Pageable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.busreservation.dto.CustomerFormDto;
 import com.busreservation.dto.PathDto;
+import com.busreservation.dto.ReservationDto;
 import com.busreservation.dto.TerminalDto;
 import com.busreservation.entity.Customer;
 import com.busreservation.entity.Path;
@@ -27,6 +29,7 @@ import com.busreservation.entity.Terminal;
 import com.busreservation.repository.PathRepository;
 import com.busreservation.repository.TerminalRepository;
 import com.busreservation.service.CustomerService;
+import com.busreservation.service.PathService;
 import com.busreservation.service.BusTerminalService;
 
 import lombok.RequiredArgsConstructor;
@@ -40,6 +43,7 @@ public class ReservationController {
 	private final PasswordEncoder passwordEncoder;
 	private final TerminalRepository terminalRepository;
 	private final BusTerminalService busTerminalService;
+	private final PathService pathService;
 	
 	@GetMapping(value = "")
 	public String main(Model model) {
@@ -50,16 +54,21 @@ public class ReservationController {
 		return "main";
 	}
 	
-	
+	@GetMapping(value ="reservation")
+	public String reservation(@RequestParam List<String> checkedValue, ReservationDto reservationDto, Model model) {
 
+		
+//		model.addAttribute("checked", checkedValue);
+		return "main";
+	}
+	
 	@PostMapping(value = "lookup")
-	public String lookUp() {
-//		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
-//		Page<PathDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
-//		
-//		model.addAttribute("items", items);
-//		model.addAttribute("itemSearchDto", itemSearchDto);
-//		model.addAttribute("maxPage", 5);
+	public String lookUp(@RequestParam Long nday1, @RequestParam Long nday2, Model model) {
+		System.out.println("---> nday1 : " + nday1);
+		System.out.println("---> nday2 : " + nday2);
+		
+		model.addAttribute("paths", pathService.getPaths(nday1, nday2));
+		
 		return "reservation/lookup";
 	}
 	
@@ -85,7 +94,6 @@ public class ReservationController {
 			if(bindingResult.hasErrors()) {
 				return "login/join";
 			}
-			
 			try {			
 				Customer member = Customer.createCustomer(customerFormDto, passwordEncoder);
 				customerService.saveCustomer(member);
@@ -93,7 +101,6 @@ public class ReservationController {
 				model.addAttribute("errorMessage", e.getMessage());
 				return "login/join";
 			}
-			
 			return "redirect:/";
 		}
 	

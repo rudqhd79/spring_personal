@@ -30,6 +30,7 @@ public class Bus {
 	@Column(name = "bus_id")
 	private Long bus_id;	//버스 아이디
 	
+	
 	@Column(name = "bus_kind")
 	private String bus_kind;	//버스 종류(버스 회사 종류)
 	

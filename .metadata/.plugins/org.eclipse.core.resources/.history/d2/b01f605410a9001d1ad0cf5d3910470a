@@ -1,0 +1,5 @@
+package com.busreservation.constant;
+
+public enum SeatReservationStatus {
+	VACANT, RESERVED
+}

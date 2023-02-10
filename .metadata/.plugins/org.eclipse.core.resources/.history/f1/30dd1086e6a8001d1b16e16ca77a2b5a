@@ -1,0 +1,40 @@
+package com.busreservation.service;
+
+import java.util.ArrayList; 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.busreservation.dto.PathDto;
+import com.busreservation.entity.Path;
+import com.busreservation.repository.PathRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+@Transactional
+public class PathService {
+	
+	private final PathRepository pathRepository;
+	
+	//경로포함된 목록 가져오기
+	@Transactional(readOnly = true)
+	public List<PathDto> getPaths(@RequestParam Long nday1, @RequestParam Long nday2) {
+		
+		if (nday1 == 11) {
+			nday1 == "서울";
+		}
+		
+		List<Path> pathList = pathRepository.findByPath();
+		List<PathDto> pathDtoList = new ArrayList<>();
+		
+		for (Path paths: pathList) {
+			PathDto pathDto = PathDto.of(paths);
+			pathDtoList.add(pathDto);
+		}
+		return pathDtoList;
+	}
+}

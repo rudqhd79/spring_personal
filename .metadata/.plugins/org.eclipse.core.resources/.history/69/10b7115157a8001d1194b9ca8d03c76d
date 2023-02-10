@@ -1,0 +1,5 @@
+package com.busreservation.repository;
+
+public class PathRepositoryCustomImpl extends PathRepositoryCustom {
+
+}

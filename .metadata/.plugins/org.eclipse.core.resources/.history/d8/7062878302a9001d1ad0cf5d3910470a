@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
+<head>
+<meta charset="UTF-8">
+<title>좌석선택</title>
+<!-- bootstrap css -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+<link th:href="@{/css/all.css}" rel="stylesheet">
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<!-- bootstrap js, popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+	integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+	integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+	crossorigin="anonymous"></script>
+<!-- jquery  -->
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+	integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+	crossorigin="anonymous"></script>
+<th:block layout:fragment="script"></th:block>
+<th:block layout:fragment="css"></th:block>
+
+<!-- 좌석 클릭시 효과 -->
+<script>
+function seatbtn(imgObj){
+	var rootPath = "/img";
+	imgObj.src=(imgObj.src.indexOf("/seat.png") > -1) ? rootPath + "/change_seat.png" : rootPath + "/seat.png";
+}
+
+function getCheckboxValue(event)  {
+	  let result = '';
+	  if(event.target.checked)  {
+	    result = event.target.value;
+	  }else {
+	    result = '';
+	  }
+	  
+	  document.getElementById('result').innerText
+	    = result;
+	}
+</script>
+
+</head>
+<body>
+	<div class="fragment-sidebar">
+		<div th:replace="fragments/sidebar::sidebar"></div>
+		<div class="base_angle" style="margin-top: 1vw">
+			<div class="lookup_word">
+				<p>좌석예약</p>
+			</div>
+			<form class="seat_form" th:action="@{/reservation}" method="get">
+				<div class="seat_choice">
+					<div>
+						<div class="seat_img" style="position: absolute;">
+							<img src="https://www.kobus.co.kr/images/common/bg_bus21.png"/>
+						</div>
+						<div class="line_all">
+							<div style="position: relative;" class="seat line_one">
+								<input type="checkbox" value="1" id="seat_1" style="display: none" onclick="getCheckBoxValue(event)" />
+								<label for="seat_1" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="4" id="seat_4" style="display: none" onclick="getCheckBoxValue(event)" />
+								<label for="seat_4" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="7" id="seat_7" style="display: none" />
+								<label for="seat_7" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="10" id="seat_10" style="display: none" />
+								<label for="seat_10" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="13" id="seat_13" style="display: none" />
+								<label for="seat_13" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="16" id="seat_16" style="display: none" />
+								<label for="seat_16" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+							</div>
+							<div style="position: relative;" class="seat line_two">
+								<input type="checkbox" value="2" id="seat_2" style="display: none" />
+								<label for="seat_2" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="5" id="seat_5" style="display: none" />
+								<label for="seat_5" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="8" id="seat_8" style="display: none" />
+								<label for="seat_8" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="11" id="seat_11" style="display: none" />
+								<label for="seat_11" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="14" id="seat_14" style="display: none" />
+								<label for="seat_14" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="17" id="seat_17" style="display: none" />
+								<label for="seat_17" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+							</div>
+							<div style="position: relative;" class="seat line_three">
+								<input type="checkbox" value="3" id="seat_3" style="display: none" />
+								<label for="seat_3" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="6" id="seat_6" style="display: none" />
+								<label for="seat_6" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="9" id="seat_9" style="display: none" />
+								<label for="seat_9" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="12" id="seat_12" style="display: none" />
+								<label for="seat_12" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="15" id="seat_15" style="display: none" />
+								<label for="seat_15" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+								<input type="checkbox" value="18" id="seat_18" style="display: none" />
+								<label for="seat_18" class="seat"><img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width:40px; height: 40px" /></label>
+							</div>
+						</div>
+					</div>
+					<div class="seat_seperate_sector">
+						<div class="s_sector0">
+							<p class="seat_seperate_sector_word">좌석을 선택해주세요</p>
+							<p class="seat_seperate_sector_word_opa">(예매 변경은)</p>
+							<p class="seat_seperate_sector_word_opa">(예매 확인 페이지에서)</p>
+							<p class="seat_seperate_sector_word_opa">(할 수 있습니다)</p>
+						</div>
+						<div class="s_sector1">
+							<p>탑승인원 :</p>
+						</div>
+						<div class="s_sector2">
+							<p>선택 좌석 번호 :</p>
+							<p id="result"></p>
+						</div>
+						<div class="s_sector3">
+							<p>총 결제금액 :</p>
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="reservation_seat">
+				<button type="submit" class="check_button" style="width:100px; height: 50px">예매하기</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

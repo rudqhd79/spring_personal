@@ -1,0 +1,15 @@
+package com.busreservation.repository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.busreservation.dto.PathDto;
+import com.busreservation.entity.Path;
+
+public interface PathRepositoryCustom {
+	
+	//PathRepositoryCustomImpl에 쓰일 추상 메소드를 하나 생성한다
+	//PathRepository에 있는 메소드와 병행하여 쓰이기 위한 공간이다
+//	Page<Path> getPaths(PathDto pathDto, Pageable pageable);
+
+}
