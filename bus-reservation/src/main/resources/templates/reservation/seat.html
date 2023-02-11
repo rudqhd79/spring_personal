@@ -41,55 +41,16 @@ function seatbtn(imgObj){
 	$(document).ready(function() {
 		calculateTotalPrice();
 		
-		$("#count").change(function() {
+		$("input:checkbox[name=checkedValue]:checked").change(function() {
 			calculateTotalPrice();
 		})
 	});
 
 	function calculateTotalPrice() {
 		var selectedBox = $("input:checkbox[name=checkedValue]:checked").length;	//개수
-		var price = $("#price").val(); //가격
-		var totalPrice = price * count;
-		$("#totalPrice").html(totalPrice + '원');
-	}
-	
-	function order() {
-        var token = $("meta[name='_csrf']").attr("content");
-        var header = $("meta[name='_csrf_header']").attr("content");
-
-        var url = "/seat";
-        var paramData = {
-            itemId : $("#itemId").val(),
-            count : $("#count").val()
-        };
-
-        var param = JSON.stringify(paramData);
-
-        $.ajax({
-            url      : url,
-            type     : "POST",
-            contentType : "application/json",
-            data     : param,
-            beforeSend : function(xhr){
-                /* 데이터를 전송하기 전에 헤더에 csrf값을 설정 */
-                xhr.setRequestHeader(header, token);
-            },
-            dataType : "json",
-            cache   : false,
-            success  : function(result, status){
-            	//alert("orderId:" + result);
-                alert("주문이 완료 되었습니다.");
-                location.href='/';
-            },
-            error : function(jqXHR, status, error){
-                if(jqXHR.status == '401'){
-                    alert('로그인 후 이용해주세요');
-                    location.href='/members/login';
-                } else{
-                    alert(jqXHR.responseText);
-                }
-            }
-        });
+		var price = 10000; //가격
+		var totalPrice = price * selectedBox;
+		$('input[name=totalPrice]').html(totalPrice + '원');
 	}
 </script>
 </th:block>
@@ -169,7 +130,7 @@ function seatbtn(imgObj){
 						</div>
 						<div class="s_sector3">
 							<p>총 결제금액 :</p>
-							<h3 name="totalPrice" id="totalPrice" ></h3>
+							<h3 name="totalPrice" id="totalPrice"></h3>
 						</div>
 					</div>
 				</div>

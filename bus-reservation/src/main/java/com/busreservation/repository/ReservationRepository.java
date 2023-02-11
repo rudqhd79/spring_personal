@@ -9,6 +9,7 @@ import com.busreservation.entity.Reservation;
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
 	//insert into select로 select에 포함된 값들을 reservation에 넣어준다
-	@Query(value = "insert into reservation select * from reservation r, path p where p.path_start =:start, p.path_end=:end");
+//	@Query(value = "insert into reservation select * from reservation r, path p where p.path_start =:start, p.path_end=:end");
+	
 	
 }

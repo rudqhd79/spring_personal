@@ -33,5 +33,4 @@ public class Seat {
 	@Column(name = "seat_no")
 	private int seat_no;	//좌석 번호
 	
-	
 }
