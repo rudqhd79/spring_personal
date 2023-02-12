@@ -7,9 +7,10 @@ import com.busreservation.entity.Reservation;
 
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-
+	//myshop에서 item을 참조하여 작성한다
+	
 	//insert into select로 select에 포함된 값들을 reservation에 넣어준다
 //	@Query(value = "insert into reservation select * from reservation r, path p where p.path_start =:start, p.path_end=:end");
-	
+//	Reservation findByReservation(Long res_id, String );
 	
 }

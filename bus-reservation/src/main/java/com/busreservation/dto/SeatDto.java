@@ -1,7 +1,10 @@
 package com.busreservation.dto;
 
+import org.modelmapper.ModelMapper;
+
 import com.busreservation.constant.SeatReservationStatus;
 import com.busreservation.entity.Bus;
+import com.busreservation.entity.Seat;
 
 public class SeatDto {
 
@@ -11,5 +14,10 @@ public class SeatDto {
 	
 	private int seat_no;	//좌석 번호
 	
-	private SeatReservationStatus seatReservationStatus;
+	private static ModelMapper modelMapper = new ModelMapper();
+	
+	public static SeatDto of(Seat seat) {
+		return modelMapper.map(seat, SeatDto.class);
+	}
+	
 }

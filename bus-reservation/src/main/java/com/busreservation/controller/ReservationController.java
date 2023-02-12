@@ -1,6 +1,7 @@
 package com.busreservation.controller;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.busreservation.dto.CustomerFormDto;
 import com.busreservation.dto.PathDto;
-import com.busreservation.dto.ReservationDto;
+import com.busreservation.dto.ReservationFormDto;
 import com.busreservation.dto.TerminalDto;
 import com.busreservation.entity.Customer;
 import com.busreservation.entity.Path;
@@ -55,7 +56,7 @@ public class ReservationController {
 	}
 	
 	@GetMapping(value ="reservation")
-	public String reservation(@RequestParam ArrayList<String> checkedValue, ReservationDto reservationDto, Model model) {
+	public String reservation(@RequestParam List<String> checkedValue, ReservationFormDto reservationDto, Model model) {
 		System.out.println("checkedValues ---> " + checkedValue);
 		
 //		model.addAttribute("checked", checkedValue);
