@@ -1,0 +1,8 @@
+package com.busreservation.repository;
+
+public interface ReservationRepositoryCustom {
+	
+	//예약할 시트 들을 가져온다
+	
+	//예약된 시트 들을 가져온다
+}

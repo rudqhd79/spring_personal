@@ -16,4 +16,5 @@ public interface PathRepository extends JpaRepository<Path, Long> {
 	@Query(value = "select * from Path p, Bus b where p.bus_id = b.bus_id and p.path_start = :path_start and p.path_end = :path_end", nativeQuery = true)
 	List<Path> findByPath(@Param("path_start") String start, @Param("path_end") String end);
 	
+	
 }

@@ -1,0 +1,49 @@
+package com.busreservation.service;
+
+import java.util.ArrayList; 
+import java.util.List;
+
+import javax.persistence.EntityNotFoundException;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.busreservation.dto.PathDto;
+import com.busreservation.entity.Bus;
+import com.busreservation.entity.Path;
+import com.busreservation.entity.Terminal;
+import com.busreservation.repository.PathRepository;
+import com.busreservation.repository.TerminalRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+@Transactional
+public class PathService {
+	
+	private final PathRepository pathRepository;
+	private final TerminalRepository terminalRepository;
+	
+	//경로포함된 목록 가져오기
+	@Transactional(readOnly = true)
+	public List<PathDto> getPaths(Long nday1, Long nday2) {
+		Terminal start = terminalRepository.findById(nday1).orElseThrow(EntityNotFoundException::new);
+		Terminal end = terminalRepository.findById(nday2).orElseThrow(EntityNotFoundException::new);
+		
+		List<Path> pathList = pathRepository.findByPath(start.getTerminalName(), end.getTerminalName());
+		List<PathDto> pathDtoList = new ArrayList<>();
+		
+		for (Path paths: pathList) {
+			PathDto pathDto = PathDto.of(paths);
+			pathDtoList.add(pathDto);
+		}
+		return pathDtoList;
+	}
+	
+	@Transactional
+	public Path getPathBusId(Bus busId) {
+		busId = pathRepository.findById(busId).orElseThrow(EntityNotFoundException::new);
+	}
+}

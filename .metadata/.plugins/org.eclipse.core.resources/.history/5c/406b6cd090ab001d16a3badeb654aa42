@@ -1,0 +1,12 @@
+package com.busreservation.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.busreservation.entity.Seat;
+
+public interface SeatRepository extends JpaRepository<Seat, Long> {
+	
+	//해당된 버스 아이디를 좌석 배정 하기 전 넣어줌
+}

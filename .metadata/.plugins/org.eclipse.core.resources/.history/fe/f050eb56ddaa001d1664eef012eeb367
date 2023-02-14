@@ -1,0 +1,8 @@
+package com.busreservation.service;
+
+@Service
+@RequiredArgsConstructor
+@Transactional
+public class ReservationService {
+
+}

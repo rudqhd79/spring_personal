@@ -1,0 +1,10 @@
+package com.busreservation.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+@RequiredArgsConstructor
+@RequestMapping(value = "/")
+public class LoginController {
+
+}

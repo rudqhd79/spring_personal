@@ -10,6 +10,11 @@ import com.busreservation.entity.Bus;
 import com.busreservation.entity.Customer;
 import com.busreservation.entity.Reservation;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class ReservationFormDto {
 	
 	private Long res_id;	//예약 아이디

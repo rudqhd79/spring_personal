@@ -1,0 +1,32 @@
+package com.busreservation.service;
+
+import org.apache.groovy.parser.antlr4.util.StringUtils;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.busreservation.entity.Seat;
+import com.busreservation.repository.SeatRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+@Transactional
+public class SeatService {
+	
+	private final SeatRepository seatRepository;
+	
+	public void saveSeatInfo(Seat seat) throws Exception {
+
+		// 시트 정보 저장
+		seat.updateSeat(seat.getSeat_id(), seat.getSeat_no());
+		seatRepository.save(seat);
+	}
+
+	/*
+	public void updateSeatInfo(Long seatId) throws Exception {
+		
+	}*/
+}

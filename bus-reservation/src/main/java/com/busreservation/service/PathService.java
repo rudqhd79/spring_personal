@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.busreservation.dto.PathDto;
+import com.busreservation.entity.Bus;
 import com.busreservation.entity.Path;
 import com.busreservation.entity.Terminal;
 import com.busreservation.repository.PathRepository;
@@ -40,4 +41,18 @@ public class PathService {
 		}
 		return pathDtoList;
 	}
+	
+	@Transactional
+	public PathDto findPathId(Long pathId) {
+		Path path = pathRepository.findById(pathId).orElseThrow(EntityNotFoundException::new);
+		
+		PathDto pathDto = PathDto.of(path);
+		
+		return pathDto;
+	}
+	
+//	@Transactional
+//	public Path getPathBusId(Long busId) {
+//		busId = pathRepository.findByBusId(busId);
+//	}
 }

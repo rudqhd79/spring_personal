@@ -32,7 +32,7 @@ public class Path {
 	private Long path_id;	//경로 아이디
 	
 	@JoinColumn(name = "bus_id")
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Bus bus;	//버스 아이디
 	
 	@Column(name = "path_start")

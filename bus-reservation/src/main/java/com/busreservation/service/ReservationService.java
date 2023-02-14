@@ -1,5 +1,22 @@
 package com.busreservation.service;
 
-public class ReservationService {
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.busreservation.repository.ReservationRepository;
+import com.busreservation.repository.SeatRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+@Transactional
+public class ReservationService {
+	
+//	private final ReservationRepository reservationRepository;
+//	private final SeatService seatService;
+//	private final SeatRepository seatRepository;
+	
+	
+	
 }

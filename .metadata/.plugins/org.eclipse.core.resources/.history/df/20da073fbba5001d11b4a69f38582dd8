@@ -1,7 +1,0 @@
-package com.busreservation.config;
-
-@Configuration
-@EnableWebSecurity
-public class SecurityConfig {
-
-}

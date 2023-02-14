@@ -1,36 +1,29 @@
 package com.busreservation.controller;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
-import org.springframework.data.domain.Pageable;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.busreservation.dto.BusDto;
 import com.busreservation.dto.CustomerFormDto;
 import com.busreservation.dto.PathDto;
-import com.busreservation.dto.ReservationFormDto;
+import com.busreservation.dto.SeatDto;
 import com.busreservation.dto.TerminalDto;
 import com.busreservation.entity.Customer;
-import com.busreservation.entity.Path;
-import com.busreservation.entity.Terminal;
-import com.busreservation.repository.PathRepository;
-import com.busreservation.repository.TerminalRepository;
+import com.busreservation.entity.Seat;
 import com.busreservation.service.CustomerService;
 import com.busreservation.service.PathService;
+import com.busreservation.service.SeatService;
+import com.busreservation.service.BusService;
 import com.busreservation.service.BusTerminalService;
 
 import lombok.RequiredArgsConstructor;
@@ -42,9 +35,10 @@ public class ReservationController {
 	
 	private final CustomerService customerService;
 	private final PasswordEncoder passwordEncoder;
-	private final TerminalRepository terminalRepository;
 	private final BusTerminalService busTerminalService;
 	private final PathService pathService;
+	private final SeatService seatService;
+	private final BusService busService;
 	
 	@GetMapping(value = "")
 	public String main(Model model) {
@@ -56,25 +50,29 @@ public class ReservationController {
 	}
 	
 	@GetMapping(value ="reservation")
-	public String reservation(@RequestParam List<String> checkedValue, ReservationFormDto reservationDto, Model model) {
-		System.out.println("checkedValues ---> " + checkedValue);
-		
-//		model.addAttribute("checked", checkedValue);
-		return "main";
+	public String reservation(@RequestParam List<Seat> checkedValue) {
+		System.out.println(checkedValue);
+		return "redirect:/";
 	}
 	
 	@PostMapping(value = "lookup")
 	public String lookUp(@RequestParam Long nday1, @RequestParam Long nday2, Model model) {
-		System.out.println("---> nday1 : " + nday1);
-		System.out.println("---> nday2 : " + nday2);
-		
+//		BusDto busDto = busService.getBusInfo(bus_id);
+		List<PathDto> terminals = pathService.getPaths(nday1, nday2);
+		terminals.stream().forEach(System.out::println);
+//		model.addAttribute("buses", busDto);
 		model.addAttribute("paths", pathService.getPaths(nday1, nday2));
 		
 		return "reservation/lookup";
 	}
 	
-	@PostMapping(value = "seat")
-	public String seat() {
+	@GetMapping(value = "seat/{path_id}")
+	public String seat(Model model, @PathVariable("path_id") Long pathId) {
+		PathDto pathDto = pathService.findPathId(pathId);
+		List<SeatDto> seats = seatService.getSeats();
+		seats.stream().forEach(System.out::println);
+		model.addAttribute("path", pathDto);
+		model.addAttribute("seats", seats);
 		return "reservation/seat";
 	}
 	
@@ -126,7 +124,6 @@ public class ReservationController {
 	}
 	
 	private final SessionManager sessionManager;
-	
 	
 	@GetMapping(value = "login")
 	public String login() {

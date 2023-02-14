@@ -48,10 +48,6 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long customer_id;	//고객 아이디
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "bus_id")
-	private Bus bus_id;	//버스 아이디
-	
 	@Column(name = "email")
 	private String email;
 	

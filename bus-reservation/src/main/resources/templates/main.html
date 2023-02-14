@@ -8,6 +8,7 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js"></script>
 <head>
 <meta charset="UTF-8">
+<!-- <meta name="_csrf_main" th:content="${_csrf.main}"/> -->
 <title>버스예매</title>
 
 <!-- bootstrap css -->
@@ -46,7 +47,36 @@
 			}
 			day.submit();
 		}
-		
+		/*
+		function order() {
+            var header = $("meta[name='_csrf_main']").attr("content");
+
+            var url = "/toLogin";
+            var paramData = {
+                start : $("nday1").val(),
+                end : $("nday2").val(),
+            };
+
+            var param = JSON.stringify(paramData);
+
+            $.ajax({
+                url      : url,
+                type     : "POST",
+                contentType : "application/json",
+                data     : param,
+                dataType : "json",
+                cache   : false,
+                error : function(jqXHR, status, error){
+                    if(jqXHR.status == '401'){
+                        alert('로그인 후 이용해주세요');
+                        location.href='/login/login';
+                    } else{
+                        alert(jqXHR.responseText);
+                    }
+                }
+            });
+		}
+		*/
 	</script>
 </th:block>
 <th:block layout:fragment="css"></th:block>
@@ -77,7 +107,7 @@
 									</select>
 								</div>
 							</div>
-						</div>
+						</div> 
 						<div class="arrow_position">
 					    <img src="https://cdn-icons-png.flaticon.com/128/4939/4939761.png" style="width: 100px; height: 100px" />
 							<div class="show_bus">
