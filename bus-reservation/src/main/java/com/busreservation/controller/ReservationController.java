@@ -4,6 +4,9 @@ import java.security.Principal;
 import java.util.List;
 
 import javax.validation.Valid;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.busreservation.dto.BusDto;
 import com.busreservation.dto.CustomerFormDto;
@@ -53,9 +57,9 @@ public class ReservationController {
 	}
 	
 	@PostMapping(value ="reservation")
-	public String reservation(@RequestBody ReservationFormDto reservationFormDto, Principal principal) {
+	public @ResponseBody ResponseEntity reservation(@RequestBody ReservationFormDto reservationFormDto, Principal principal) {
 		System.out.println(reservationFormDto);
-		return "redirect:/";
+		return new ResponseEntity<ReservationFormDto>(reservationFormDto, HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "lookup")

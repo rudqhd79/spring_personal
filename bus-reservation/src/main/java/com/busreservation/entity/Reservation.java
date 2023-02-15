@@ -46,5 +46,4 @@ public class Reservation {
 	
 	private int reservationPrice;	//예약 금액
 	
-	
 }

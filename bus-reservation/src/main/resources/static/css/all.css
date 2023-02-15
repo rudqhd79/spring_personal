@@ -153,6 +153,8 @@
 	border: 3px solid black;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	gap : 20px;
 }
 
 .lookup_list_table {

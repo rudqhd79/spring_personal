@@ -1,5 +1,9 @@
 package com.busreservation.dto;
 
+import org.modelmapper.ModelMapper;
+
+import com.busreservation.entity.ReservationSeat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,6 +11,17 @@ import lombok.Setter;
 @Setter
 public class ReservationSeatDto {
 
+	private Long id;
 	
+	private Long BusSeatId;
 	
+	private static ModelMapper modelMapper = new ModelMapper();
+	
+	public ReservationSeat createReservationSeat() {
+		return modelMapper.map(this, ReservationSeat.class);
+	}
+	
+	public static ReservationSeatDto of(ReservationSeat reservationSeat) {
+		return modelMapper.map(reservationSeat, ReservationSeatDto.class);
+	}
 }

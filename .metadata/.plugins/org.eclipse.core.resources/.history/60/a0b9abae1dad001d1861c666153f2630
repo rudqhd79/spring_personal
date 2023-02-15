@@ -1,0 +1,5 @@
+package com.busreservation.service;
+
+public interface ReservationSeatService {
+
+}
