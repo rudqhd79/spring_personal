@@ -29,21 +29,17 @@ public class Path {
 
 	@Id
 	@Column(name = "path_id")
-	private Long path_id;	//경로 아이디
+	private Long id;	//경로 아이디
 	
 	@JoinColumn(name = "bus_id")
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Bus bus;	//버스 아이디
 	
-	@Column(name = "path_start")
-	private String path_start;	//경로 시작점
+	private String pathStart;	//경로 시작점
 	
-	@Column(name = "path_end")
-	private String path_end;		//경로 끝지점
+	private String pathEnd;		//경로 끝지점
 	
-	@Column(name = "path_start_time")
-	private String path_start_time;	//경로 출발시간
+	private String pathStartTime;	//경로 출발시간
 	
-	@Column(name = "path_end_time")
-	private String path_end_time;	//경로 도착시간
+	private String pathEndTime;	//경로 도착시간
 }

@@ -18,8 +18,7 @@ public class Terminal {
 	
 	@Id
 	@Column(name = "terminal_id")
-	private Long terminalId;
+	private Long id;
 
-	@Column(name = "terminal_name")
 	private String terminalName;
 }

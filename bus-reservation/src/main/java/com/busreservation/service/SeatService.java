@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.busreservation.dto.SeatDto;
 import com.busreservation.entity.Bus;
-import com.busreservation.entity.Seat;
-import com.busreservation.repository.SeatRepository;
+import com.busreservation.entity.BusSeat;
+import com.busreservation.repository.BusSeatRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,16 +19,16 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class SeatService {
 
-	private final SeatRepository seatRepository;
+	private final BusSeatRepository seatRepository;
 	 
 	//좌석 아이디를 entity -> dto 변환
 	@Transactional
 	public List<SeatDto> getSeats() {
 		
-		List<Seat> seatList = seatRepository.findAll();
+		List<BusSeat> seatList = seatRepository.findAll();
 		List<SeatDto> seatDtoList = new ArrayList<>();
 		
-		for (Seat seat : seatList) {
+		for (BusSeat seat : seatList) {
 			SeatDto seatDto = SeatDto.of(seat);
 			seatDtoList.add(seatDto);
 		}

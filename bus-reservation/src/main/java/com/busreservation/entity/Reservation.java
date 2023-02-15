@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -29,29 +30,21 @@ import lombok.Setter;
 public class Reservation {
 
 	@Id
-	@Column(name = "res_id")
+	@Column(name = "reservation_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long res_id;	//예약 아이디
+	private Long id;	//예약 아이디
 	
 	@JoinColumn(name = "customer_id")
-	@OneToOne(fetch = FetchType.LAZY)
-	private Customer customer_id;	//고객 아이디
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Customer customer;	//고객 아이디
 	
 	@JoinColumn(name = "bus_id")
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<Bus> bus_id = new ArrayList<>();	//버스 아이디
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Bus bus;	//버스 아이디
 	
-	@JoinColumn(name = "seat_id")
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<Seat> seat = new ArrayList<>();
+	private int reservationPeople;	//예약 인원
 	
-	@Column(name = "res_people")
-	private int res_people;	//예약 인원
+	private int reservationPrice;	//예약 금액
 	
-	@Column(name = "res_price")
-	private int res_price;	//예약 금액
-	
-	@Column(name = "res_seat_no")
-	private int res_seat_no;
 	
 }

@@ -46,28 +46,29 @@
 				<div class="login">
 					<div class="join_section2">
 						<div class="join_section_child">
-							<span>이름</span><input type="text" id="name" th:field="*{customer_name}" />
+							<span>이름</span><input type="text" th:field="*{customerName}" />
 							<label for="name"></label>
-							<p th:if="${#fields.hasErrors('customer_name')}" th:errors="*{customer_name}" class="fieldError">Incorrect Data</p>
+							<p th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}" class="fieldError">Incorrect Data</p>
 						</div>
 						<div class="join_section_child">
-							<span>이메일</span><input type="text" id="id" th:field="*{email}" />
+							<span>이메일</span><input type="text" th:field="*{email}" />
 							<label for="id"></label>
 							<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Incorrect Data</p>
 						</div>
 						<div class="join_section_child">
-							<span>전화번호</span><input type="text" id="phone" th:field="*{customer_number}" />
+							<span>전화번호</span><input type="text" th:field="*{customerNumber}" />
 							<label for="phone"></label>
-							<p th:if="${#fields.hasErrors('customer_number')}" th:errors="*{customer_number}" class="fieldError">Incorrect Data</p>
+							<p th:if="${#fields.hasErrors('customerNumber')}" th:errors="*{customerNumber}" class="fieldError">Incorrect Data</p>
 						</div>
 						<div class="join_section_child">
-							<span>비밀번호</span><input type="password" id="pw" th:field="*{customer_password}" />
+							<span>비밀번호</span><input type="password" th:field="*{customerPassword}" />
 							<label for="pw"></label>
-							<p th:if="${#fields.hasErrors('customer_password')}" th:errors="*{customer_password}" class="fieldError">Incorrect Data</p>
+							<p th:if="${#fields.hasErrors('customerPassword')}" th:errors="*{customerPassword}" class="fieldError">Incorrect Data</p>
 						</div>
 					<p class="join_btn"><input type="submit" value="가입하기" style="font-weight: bold;" /></p>
 					</div>
 				</div>
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 			</form>
 		</div>
 	</div>

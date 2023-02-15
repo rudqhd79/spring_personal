@@ -17,19 +17,19 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PathDto {
 	
-	private Long path_id;	//경로 아이디
+	private Long id;	//경로 아이디
 	
 	private Bus bus;	//버스 아이디
 	
-	private String path_start;	//경로 시작점
+	private String pathStart;	//경로 시작점
 	
-	private String path_end;		//경로 끝지점
+	private String pathEnd;		//경로 끝지점
 	
-	private String path_start_time;	//경로 출발시간
+	private String pathStartTime;	//경로 출발시간
 	
-	private String path_end_time;	//경로 도착시간
+	private String pathEndTime;	//경로 도착시간
 	
-	private Terminal terminal_id;
+	private Terminal terminal;
 
 	private static ModelMapper modelMapper = new ModelMapper();
 	

@@ -17,13 +17,13 @@ import lombok.ToString;
 @NoArgsConstructor
 public class TerminalDto {
 
-	private Long terminalId;
+	private Long id;
 	
 	private String terminalName;
 	
 	@QueryProjection
-	public TerminalDto(Long terminal_id, String terminalName) {
-		this.terminalId = terminal_id;
+	public TerminalDto(Long id, String terminalName) {
+		this.id = id;
 		this.terminalName = terminalName;
 	}
 	

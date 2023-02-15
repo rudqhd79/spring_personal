@@ -53,12 +53,12 @@
 				<tbody>
 					<th:block th:each="path, status : ${paths}">
 						<tr class="lookup_tr">
-							<td class="lookup_td">[[${path.path_start_time}]] ~ [[${path.path_end_time}]]</td>
-							<td class="lookup_td">[[${path.path_start}]]</td>
-							<td class="lookup_td">[[${path.bus.bus_kind}]]</td>
-							<td class="lookup_td">[[${path.path_end}]]</td>
+							<td class="lookup_td">[[${path.pathStartTime}]] ~ [[${path.pathEndTime}]]</td>
+							<td class="lookup_td">[[${path.pathStart}]]</td>
+							<td class="lookup_td">[[${path.bus.busKind}]]</td>
+							<td class="lookup_td">[[${path.pathEnd}]]</td>
 							<td class="lookup_td">
-							<a th:href="'seat/' +${path.path_id}">예약하기</a>
+							<a th:href="'seat/' + ${path.id} + '?busId=' + ${path.bus.id}">예약하기</a>
 							<!-- <button type="submit">예약</button> -->
 							</td>
 						</tr>

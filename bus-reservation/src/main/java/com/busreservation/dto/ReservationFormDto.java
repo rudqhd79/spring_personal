@@ -17,19 +17,13 @@ import lombok.Setter;
 @Setter
 public class ReservationFormDto {
 	
-	private Long res_id;	//예약 아이디
+	private Long id;	//예약 아이디
 	
-	private Customer customer_id;	//고객 아이디
+	private int reservationPeople;	//예약 인원
 	
-	private Bus bus_id;	//버스 아이디
+	private int reservationPrice;	//예약 금액
 	
-	private int res_people;	//예약 인원
-	
-	private int res_price;	//예약 금액
-	
-	SeatReservationStatus seatReservationStatus;	//좌석 예매 상태 (예매 가능, 불가능)
-	
-	private List<Long> seatIds = new ArrayList<>();		//좌석의 아이디(어떤 좌석인지)를 저장
+	private List<Long> busSeatIds = new ArrayList<>();		//좌석의 아이디(어떤 좌석인지)를 저장
 	
 	private static ModelMapper modelMapper = new ModelMapper();
 	

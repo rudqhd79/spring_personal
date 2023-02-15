@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.busreservation.repository.ReservationRepository;
-import com.busreservation.repository.SeatRepository;
+import com.busreservation.repository.BusSeatRepository;
 
 import lombok.RequiredArgsConstructor;
 

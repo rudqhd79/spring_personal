@@ -31,7 +31,7 @@ public class CustomerService implements UserDetailsService {	//UserDetailsServic
 		//userDetails의 객체를 반환
 		return User.builder()
 				.username(customer.getEmail())
-				.password(customer.getCustomer_password())
+				.password(customer.getCustomerPassword())
 				.roles(customer.getRole().toString())
 				.build();
 	}

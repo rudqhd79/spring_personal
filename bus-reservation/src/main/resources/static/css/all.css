@@ -187,6 +187,13 @@
 	margin-top: 10px;
 }
 
+.seat_total {
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+}
+
 .seat_choice {
 	display: flex;
 	justify-content: space-between;

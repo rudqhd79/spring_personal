@@ -102,7 +102,7 @@
 									<select class="select-region" name="nday1">
 										<option value="a">출발지 선택</option>
 										<th:block th:each=" terminal, status : ${terminals}">
-											<option th:value="${terminal.terminalId}" th:text="${terminal.terminalName}"></option>
+											<option th:value="${terminal.id}" th:text="${terminal.terminalName}"></option>
 										</th:block>
 									</select>
 								</div>
@@ -121,7 +121,7 @@
 									<select class="select-region" name="nday2">
 										<option value="b">도착지 선택</option>
 										<th:block th:each=" terminal, status : ${terminals}">
-											<option th:value="${terminal.terminalId}" th:text="${terminal.terminalName}"></option>
+											<option th:value="${terminal.id}" th:text="${terminal.terminalName}"></option>
 										</th:block>
 									</select>
 								</div>
