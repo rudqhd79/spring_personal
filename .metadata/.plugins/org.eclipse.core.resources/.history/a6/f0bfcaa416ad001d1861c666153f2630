@@ -1,7 +1,0 @@
-package com.busreservation.dto;
-
-@Getter
-@Setter
-public class ReservationSeatDto {
-
-}

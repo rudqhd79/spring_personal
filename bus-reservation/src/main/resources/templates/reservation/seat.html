@@ -41,18 +41,54 @@
 
 		var totalPerson = 0;
 		var busSeatIds = [];
+		var basicPrice = 10000;
+		var totalPrice = 0;
+		var selectedSeat = document.getElementsBy
 
 		function plusPersonCount() {
 			totalPerson += 1;
 			$('#reservationPeople').text(totalPerson).append('명');
 		}
+		
+		function plusPrice() {
+			totalPrice += basicPrice;
+			$('#reservationPrice').text(totalPrice).append('원');
+		}
+		
+		function addSeatNo() {
+			if(document.getElementById('selectBtn').checked) {
+				
+				$('#reservationSeat').text(busSeatIds);
+			} else {
+				return false;
+			}
+		}
 
 		function MinusPersonCount() {
 			if (!totalPerson) {
 				return;
-			} else {
+			}
+			else {
 				totalPerson -= 1;
 				$('#reservationPeople').text(totalPerson).append('명');
+			}
+		}
+		
+		function MinusPrice() {
+			if(!totalPrice) {
+				return;
+			}
+			else {
+				totalPrice -= basicPrice;
+				$('#reservationPrice').text(totalPrice).append('원');
+			}
+		}
+		
+		function removeSeatNo() {
+			if(busSeatIds.length === 0) {
+				return;
+			} else {
+				$('#reservationSeat').text(busSeatIds);
 			}
 		}
 
@@ -66,12 +102,6 @@
 			//값을 찾아서 빼는 뭔가의 로직..
 		}
 
-		function calculateTotalPrice() {
-			var price = 10000;
-			var totalPrice = price * totalPerson;
-			return totalPrice;
-		}
-
 		function seatbtn(imgObj) {
 			var rootPath = '/img';
 			//imgObj.src=(imgObj.src.indexOf("/seat.png") > -1) ? rootPath + "/change_seat.png" : rootPath + "/seat.png";
@@ -80,11 +110,15 @@
 				//시트를 선택했을때
 				imgObj.src = rootPath + '/change_seat.png';
 				plusPersonCount();
+				plusPrice();
+				addSeatNo();
 				addBusSeatIds(imgObj);
 			} else {
 				//선택 해제할때
 				imgObj.src = rootPath + '/seat.png';
 				MinusPersonCount();
+				MinusPrice();
+				removeSeatNo();
 				removeBusSeatIds(imgObj);
 			}
 		}
@@ -98,9 +132,8 @@
 				return;
 			}
 
-			var totalPrice = calculateTotalPrice(); //총금액
-
 			var url = '/reservation';
+			
 			var paramData = {
 				reservationPrice : totalPrice,
 				reservationPeople : totalPerson,
@@ -153,11 +186,10 @@
 						<div style="position: relative" class="seat line_one">
 							<th:block th:each="seat, status : ${seats}">
 								<div class="seat_img_class">
-									<input type="checkbox" id="selectBtn" style="display: none"
-										name="checkedValue" th:value="${seat.id}" /> <label
-										for="selectBtn" class="seat"> <img src="/img/seat.png"
-										class="selected" onclick="seatbtn(this)"
-										style="width: 40px; height: 40px" /></label>
+									<input type="checkbox" id="selectBtn" style="display: none" name="checkedValue" th:value="${seat.id}" />
+									<label for="selectBtn" class="seat">
+										<img src="/img/seat.png" class="selected" onclick="seatbtn(this)" style="width: 40px; height: 40px" />
+									</label>
 								</div>
 							</th:block>
 						</div>

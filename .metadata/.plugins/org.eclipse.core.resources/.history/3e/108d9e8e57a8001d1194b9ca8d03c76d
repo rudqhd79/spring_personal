@@ -1,7 +1,0 @@
-package com.busreservation.repository;
-
-public interface PathRepositoryCustom {
-	
-	//PathRepositoryCustomImpl에 쓰일 추상 메소드를 하나 생성한다
-
-}

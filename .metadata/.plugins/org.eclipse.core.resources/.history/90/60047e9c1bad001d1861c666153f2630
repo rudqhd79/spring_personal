@@ -1,5 +1,0 @@
-package com.busreservation.repository;
-
-public interface ReservationSeatRepository extends JpaRepository<Reservation, Long> {
-
-}

@@ -68,7 +68,7 @@ public class ReservationController {
 		List<PathDto> terminals = pathService.getPaths(nday1, nday2);
 		terminals.stream().forEach(System.out::println);
 //		model.addAttribute("buses", busDto);
-		model.addAttribute("paths", pathService.getPaths(nday1, nday2));
+		model.addAttribute("paths", terminals);
 		
 		return "reservation/lookup";
 	}
@@ -77,7 +77,7 @@ public class ReservationController {
 	public String seat(Model model, @PathVariable("pathId") Long pathId) {
 		PathDto pathDto = pathService.findPathId(pathId);
 		List<SeatDto> seats = seatService.getSeats();
-		seats.stream().forEach(System.out::println);
+//		seats.stream().forEach(System.out::println);
 		model.addAttribute("path", pathDto);
 		model.addAttribute("seats", seats);
 		return "reservation/seat";
